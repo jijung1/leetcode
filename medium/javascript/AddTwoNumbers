@@ -1,0 +1,139 @@
+*Problem Description
+
+You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.
+
+You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+
+Example:
+
+Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+Output: 7 -> 0 -> 8
+Explanation: 342 + 465 = 807.
+
+*Solution
+
+
+
+```
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} l1
+ * @param {ListNode} l2
+ * @return {ListNode}
+ */
+var addTwoNumbers = function(l1, l2) {
+    longerList = l1;
+    test1 = l1;
+    test2 = l2;
+    while(true) {
+        if (test1 == null) {
+            longerList = l2;
+            break;
+        }
+        else if (test2 == null) {
+            longerList = l1;
+            break;
+        }
+        test1 = test1.next;
+        test2 = test2.next;
+        
+    }
+    curr1 = l1;
+    curr2 = l2;
+    if (longerList === l1) {
+        console.log("l1 is longer");
+        while (curr2 != null) {
+            curr1.val += curr2.val;
+            console.log(longerList.val);
+
+            if (curr1.val > 9) {
+                if (curr1.next == null) {
+                    newNode = new ListNode(1,null);
+                    curr1.next = newNode;
+                    curr1.val %= 10;
+                    if (curr1.next.val > 9) {
+                        newNode2 = new ListNode(1, null);
+                        curr1.next.next = newNode2;
+                        curr1.next.val %= 10;
+                    }
+                }
+                else {
+                    curr1.next.val += 1;
+                    curr1.val %= 10;
+                    curr5 = curr1;
+                    while (curr5.next.val > 9) {
+                        console.log("curr5.next.val: " + curr5.next.val);
+                        curr5.next.val %= 10;
+                        if (curr5.next.next == null) {
+                            newNode = new ListNode(1, null);
+                            curr5.next.next = newNode;
+                        }
+                        else {
+                            curr5.next.next.val += 1;
+                        }
+                        curr5 = curr5.next;
+                    }
+
+                }
+            }
+            curr2 = curr2.next;
+            curr1 = curr1.next;
+        }
+    }
+    else {
+        console.log("l2 is longer");
+
+        while (curr1 != null) {
+            curr2.val += curr1.val;
+            if (curr2.val > 9) {
+                console.log(curr2.val);
+                if (curr2.next == null) {
+                    console.log("true");
+                    newNode = new ListNode(1, null);
+                    curr2.next = newNode;
+                    curr2.val %= 10;
+                    curr3 = curr2;
+                    while (curr3.val > 9) {
+                        curr3.val %= 10;
+                        newNode2 = new ListNode(1,null);
+                        curr3 = curr3.next;
+                    }
+                }
+            
+                else {
+                    curr2.next.val += 1;
+                    curr2.val %= 10;
+                    curr6 = curr2;
+                    while (curr6.next.val > 9) {
+                        console.log("curr6: " + curr6.next.val);
+                        curr6.next.val %=10;
+                        if (curr6.next.next == null) {
+                            console.log("null");
+                            newNode = new ListNode(1, null);
+                            curr6.next.next = newNode;
+                        }
+                        else {
+                            curr6.next.next.val += 1;
+                        }
+                        curr6 = curr6.next;
+                    }
+                }
+            }
+            curr1 = curr1.next;
+            curr2 = curr2.next;
+        }
+    }
+
+    return longerList;
+    
+};
+
+
+```
