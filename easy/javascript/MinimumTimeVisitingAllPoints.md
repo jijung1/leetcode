@@ -30,6 +30,8 @@ points[i].length == 2
 
 * Solution 
 
+```
+
  /*
  * @param {number[][]} points
  * @return {number}
@@ -100,3 +102,5 @@ var minTimeToVisitAllPoints = function(points) {
     console.log(elapsedTime);
     return elapsedTime;
 };
+
+```
