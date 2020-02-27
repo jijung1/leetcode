@@ -1,6 +1,5 @@
-* Problem Description *
+* Problem Description 
 
-**
   On a plane there are n points with integer coordinates points[i] = [xi, yi]. Your task is to find the minimum time in seconds to visit all points.
 
 You can move according to the next rules:
@@ -31,9 +30,8 @@ points[i].length == 2
 
 **
 
-* Solution *
-
-**
+* Solution 
+ /*
  * @param {number[][]} points
  * @return {number}
  */
@@ -100,7 +98,6 @@ var minTimeToVisitAllPoints = function(points) {
             console.log("u done fked up");
         }
     }
-   **
     console.log(elapsedTime);
     return elapsedTime;
 };
